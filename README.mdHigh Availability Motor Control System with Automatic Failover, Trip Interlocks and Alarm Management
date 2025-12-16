@@ -1,0 +1,25 @@
+HOW TO RUN THE PROGRAM:
+
+1. Download the program file.
+2  Load the program via the CodeSys software
+3. In CodeSys load the program by going into Simulation Mode then select online
+4  You are now in the simulation section of the program, go on applications and select Application (Right Click) and select RUN
+5. Now the program is running, you can check if operation is satified by toggling the inputs (E_STOP, ON/OFF SW, Overload inputs) seeing if its true or false.
+
+
+
+HOW THE PROGRAM OPERATES:
+1.  The E_STOP1 is the Emergency Stop Switch for the Motor1 and E_STOP_MOTOR2 is the Emergency stop switch for Motor2
+2.  When there is no Emergency and the ON_SW_MOTOR is ON, the Motor_1 is set to be in the ON condition
+3.  The OFF_SW_MOTOR_1 turns OFF the Motor1 and if there is an overload that is experienced the Motor1 turns OFF
+4.  The Motor1_Indicator is the timer in which we can connect our LED at Q and whenever the Motor1 is ON we can see the blinking signal after every 2 seconds
+5.  The TimesCounterFails Counter is used to measure and record the times our Motor1 fails and is set to reset after 6 failures
+6.  The MOVE block gives us a way to read the number of times our counter has failed before it has every reached the pre-set 6 times
+7.  The Math Operator Greater than alerts us is our Motor1 has failed more than 3 times which is half of the maximum accepted failures, we can see it by attaching an orange LED at the output of GT.
+8.  The Motor2_Activator is a On Delay Timer that is triggered by failure due to Motor1.
+9.  When the Motor2_Activator is turned ON we give the wait for 10seconds before turning on the Motor2 with the hope of Motor1 turning ON.
+10. For the 20second that Motor1 and Motor2 are non functional we have Motor3 to carry on business productivity which is then turned off immediately if either Motor1 or Motor2 turns ON
+11. We are able to turn OFF Motor2 using the Motor2_Off_Switch and also its turned OFF by an overload if it is to occur
+12. The Motor3 as said acts as the Redundant back-up Motor which is turned ON in the worst case condition, we are able to manually turn it OFF via MOTOR3_OFF switch
+13. If all the Motors are non functional we get an Alarm triggered alerting the Engineers of a disaster occurrence.
+14. Motor3_Off turns the Motor3 OFF and no motor will be functional and triggers the previously stated alarm.
